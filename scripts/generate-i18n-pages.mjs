@@ -1,3 +1,5 @@
+import { brandDocument } from './format-monster-metadata.mjs';
+import './format-monster-env.mjs';
 import fs from 'fs';
 import path from 'path';
 import { JSDOM } from 'jsdom';
@@ -380,6 +382,7 @@ function processFileForLanguage(
     link.setAttribute('href', newHref);
   });
 
+  brandDocument(document);
   const result = dom.serialize();
 
   dom.window.close();
@@ -435,6 +438,7 @@ function updateEnglishFile(filePath, originalContent, translatedLangs) {
     injectToolBreadcrumb(document, 'en', enToolName, canonicalUrl);
   }
 
+  brandDocument(document);
   const result = dom.serialize();
 
   dom.window.close();

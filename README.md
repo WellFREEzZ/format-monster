@@ -1,3 +1,13 @@
+# Format Monster
+
+A branded fork of [BentoPDF](https://github.com/alam00000/bentopdf) for `format.monster`, with the full PDF toolkit, a custom logo, and violet/mint UI colours.
+
+See [deployment and development instructions](FORMAT_MONSTER.md). Container: `ghcr.io/wellfreezz/format-monster:latest` (published by GitHub Actions).
+
+The original project documentation and attribution follow.
+
+---
+
 <p align="center"><img src="public/images/favicon-no-bg.svg" width="80"></p>
 <h1 align="center">BentoPDF</h1>
 <p align="center">

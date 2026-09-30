@@ -1,3 +1,4 @@
+import './scripts/format-monster-env.mjs';
 import { defineConfig } from 'vitest/config';
 import type { IncomingMessage, ServerResponse } from 'http';
 import http from 'http';
@@ -568,11 +569,12 @@ export default defineConfig(() => {
           process: true,
         },
       }),
+      // HTML is rewritten after Vite; let Nginx gzip the final pages at runtime.
       viteCompression({
         algorithm: 'brotliCompress',
         ext: '.br',
         threshold: 1024,
-        filter: /\.(js|mjs|json|css|html|wasm|svg)$/i,
+        filter: /\.(js|mjs|json|css|wasm|svg)$/i,
         compressionOptions: {
           params: {
             [zlibConstants.BROTLI_PARAM_QUALITY]: 11,
@@ -586,7 +588,7 @@ export default defineConfig(() => {
         algorithm: 'gzip',
         ext: '.gz',
         threshold: 1024,
-        filter: /\.(js|mjs|json|css|html|wasm|svg)$/i,
+        filter: /\.(js|mjs|json|css|wasm|svg)$/i,
         compressionOptions: {
           level: 9,
         },

@@ -1,0 +1,46 @@
+/* Approved Format Monster palette. */
+:root {
+  --fm-violet-50: #f7f2fc;
+  --fm-violet-100: #eee4f8;
+  --fm-violet-200: #dcc8f1;
+  --fm-violet-300: #aa87de;
+  --fm-violet-400: #9b73d9;
+  --fm-violet-500: #8d5fd3;
+  --fm-violet-600: #8757cf;
+  --fm-violet-700: #7844c0;
+  --fm-violet-800: #4e2e89;
+  --fm-violet-900: #382260;
+  --fm-violet-950: #23153d;
+  --fm-mint-50: #effbf4;
+  --fm-mint-100: #ddf7e8;
+  --fm-mint-200: #bcefd1;
+  --fm-mint-300: #87deaa;
+  --fm-mint-400: #72d99b;
+  --fm-mint-500: #5fd38d;
+  --fm-mint-600: #48be76;
+  --fm-mint-700: #35965c;
+  --fm-mint-800: #286f46;
+  --fm-mint-900: #1f5638;
+  --fm-mint-950: #102d1e;
+  --background: #0f0c14;
+  --surface: #17121f;
+  --surface-raised: #21192c;
+  --surface-hover: #291f36;
+  --border: #352842;
+  --border-subtle: #281f32;
+  --foreground: #f8f5fb;
+  --foreground-secondary: #d3cbd9;
+  --foreground-muted: #9e93a8;
+  --primary: #8757cf;
+  --primary-hover: #7844c0;
+  --primary-active: #6c3ab8;
+  --primary-foreground: #ffffff;
+  --accent: #5fd38d;
+  --accent-hover: #48be76;
+  --accent-foreground: #0f0c14;
+  --primary-soft: #251a35;
+  --accent-soft: #14281c;
+  --link: #b899e6;
+  --badge-foreground: #cbb1ed;
+  --focus-ring: #aa87de;
+}

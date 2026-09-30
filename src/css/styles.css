@@ -16,6 +16,7 @@
 @import '@fontsource/cedarville-cursive/400.css';
 @import 'cropperjs/dist/cropper.css';
 @import 'tailwindcss';
+@import './brand-tokens.css';
 
 @theme {
   --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
@@ -25,15 +26,26 @@
   --font-lato: 'Lato', sans-serif;
   --font-merriweather: 'Merriweather', serif;
   --font-cedarville: 'Cedarville Cursive', cursive;
-  --color-gray-900: rgb(34, 34, 34);
-  --color-gray-800: rgb(42, 42, 42);
-  --color-gray-700: rgb(56, 56, 56);
-  --color-gray-600: rgb(68, 68, 68);
-  --color-indigo-300: #a5b4fc;
-  --color-indigo-400: #818cf8;
-  --color-indigo-500: #6366f1;
-  --color-indigo-600: #6366f1;
-  --color-indigo-700: #4f46e5;
+  --color-gray-900: var(--background);
+  --color-gray-800: var(--surface);
+  --color-gray-700: var(--surface-raised);
+  --color-gray-600: var(--surface-hover);
+  --color-gray-400: var(--foreground-muted);
+  --color-gray-300: var(--foreground-secondary);
+  --color-gray-100: var(--foreground);
+  --color-gray-500: var(--foreground-muted);
+  --color-green-300: var(--fm-mint-300);
+  --color-green-400: var(--fm-mint-400);
+  --color-green-500: var(--fm-mint-500);
+  --color-green-600: var(--fm-mint-600);
+  --color-green-700: var(--fm-mint-700);
+  --color-brand-mint: var(--accent);
+  --color-brand-mint-hover: var(--accent-hover);
+  --color-indigo-300: var(--fm-violet-300);
+  --color-indigo-400: var(--fm-violet-400);
+  --color-indigo-500: var(--fm-violet-500);
+  --color-indigo-600: var(--primary);
+  --color-indigo-700: var(--primary-hover);
 }
 
 @layer base {
@@ -59,16 +71,16 @@ html {
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background-color: rgb(34, 34, 34);
-  color: #d1d5db;
+  background-color: var(--background);
+  color: var(--foreground-secondary);
 }
 
 .tool-card {
   transition:
     transform 0.2s ease-in-out,
     box-shadow 0.2s ease-in-out;
-  border: 1px solid #383838;
-  background-color: #2a2a2a;
+  border: 1px solid var(--border);
+  background-color: var(--surface);
   padding: 1.5rem;
   border-radius: 0.5rem;
   display: flex;
@@ -82,7 +94,7 @@ body {
   box-shadow:
     0 10px 15px -3px rgba(0, 0, 0, 0.2),
     0 4px 6px -2px rgba(0, 0, 0, 0.1);
-  border-color: #6366f1;
+  border-color: var(--primary);
 }
 
 .category-header {
@@ -107,11 +119,11 @@ body {
 }
 
 .category-header:hover {
-  color: #818cf8;
+  color: var(--fm-violet-300);
 }
 
 .category-header:hover .category-chevron {
-  color: #818cf8;
+  color: var(--fm-violet-300);
 }
 
 .category-tools {
@@ -135,7 +147,7 @@ body {
   border-left: none;
   border-right: none;
   border-top: none;
-  border-bottom: 1px solid #2a2a2a;
+  border-bottom: 1px solid var(--surface);
   background-color: transparent;
   align-items: center;
   justify-content: flex-start;
@@ -169,8 +181,8 @@ body {
 .compact-mode .tool-card:hover {
   transform: none;
   box-shadow: none;
-  background-color: #2a2a2a;
-  border-color: #2a2a2a;
+  background-color: var(--surface);
+  border-color: var(--surface);
 }
 
 @media (min-width: 640px) {
@@ -203,7 +215,7 @@ input[type='file']::file-selector-button {
 /* Style for drag-and-drop placeholder */
 .sortable-ghost {
   opacity: 0.4;
-  border: 2px dashed #6366f1;
+  border: 2px dashed var(--primary);
 }
 
 #embed-pdf-container > div {
@@ -241,9 +253,9 @@ input[type='file']::file-selector-button {
   min-width: 0;
   overflow: auto;
   height: 75vh;
-  border: 2px solid #383838;
+  border: 2px solid var(--border);
   border-radius: 0.5rem;
-  background-color: #2a2a2a;
+  background-color: var(--surface);
 }
 
 /* This rule ensures canvases in side-by-side panels display at their natural rendered size. */
@@ -275,9 +287,9 @@ footer a {
 }
 
 .pill {
-  background-color: #383838;
+  background-color: var(--border);
   /* bg-gray-700 */
-  color: #d1d5db;
+  color: var(--foreground-secondary);
   /* text-gray-300 */
   padding: 8px 16px;
   border-radius: 9999px;
@@ -287,7 +299,7 @@ footer a {
 }
 
 .cta-button {
-  background-color: #6366f1;
+  background-color: var(--primary);
   /* indigo-600 */
   color: white;
   font-weight: 600;
@@ -298,7 +310,7 @@ footer a {
 }
 
 .cta-button:hover {
-  background-color: #4f46e5;
+  background-color: var(--primary-hover);
   /* indigo-700 */
 }
 
@@ -309,7 +321,7 @@ footer a {
 }
 
 .feature-card {
-  background-color: #2a2a2a;
+  background-color: var(--surface);
   /* bg-gray-800 */
   padding: 24px;
   border-radius: 8px;
@@ -328,12 +340,17 @@ footer a {
 .marker-slanted {
   position: relative;
   display: inline-block;
-  color: #8d8d89;
+  color: var(--foreground-muted);
 }
 
 .section-divider {
   height: 1px;
-  background: linear-gradient(to right, transparent, #6366f1, transparent);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--primary),
+    transparent
+  );
   /* Fades from transparent to indigo and back */
   margin: 2rem auto;
   /* my-16 */
@@ -348,7 +365,7 @@ footer a {
   /* py-3 px-8 */
   border-radius: 0.5rem;
   /* rounded-lg */
-  background-image: linear-gradient(to bottom, #6366f1, #6366f1);
+  background-image: linear-gradient(to bottom, var(--primary), var(--primary));
   /* from-indigo-500 to-indigo-600 */
   color: #ffffff;
   /* text-white */
@@ -369,8 +386,8 @@ footer a {
   outline: 2px solid transparent;
   outline-offset: 2px;
   box-shadow:
-    0 0 0 2px #222222,
-    0 0 0 4px #818cf8;
+    0 0 0 2px var(--background),
+    0 0 0 4px var(--fm-violet-300);
   /* focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-indigo-400 */
 }
 
@@ -386,9 +403,9 @@ footer a {
   /* w-16 */
   height: 64px;
   /* h-16 */
-  border: 5px solid #383838;
+  border: 5px solid var(--border);
   /* border-gray-700 */
-  border-bottom-color: #6366f1;
+  border-bottom-color: var(--primary);
   /* border-indigo-600 */
   border-radius: 50%;
   display: inline-block;
@@ -418,7 +435,7 @@ footer a {
 
 /* Highlight for selected signature in the saved list */
 .saved-signature.selected {
-  border-color: #6366f1;
+  border-color: var(--primary);
   /* indigo-600 */
   box-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
 }
@@ -445,7 +462,7 @@ footer a {
 }
 
 .faq-item.open .faq-question {
-  color: #818cf8;
+  color: var(--fm-violet-300);
   /* indigo-400 */
 }
 
@@ -455,21 +472,21 @@ footer a {
 
 /* Testimonial Card Styles */
 .testimonial-card {
-  background-color: #2a2a2a;
+  background-color: var(--surface);
   /* bg-gray-800 */
   padding: 24px;
   border-radius: 0.75rem;
   /* rounded-xl */
-  border: 1px solid #383838;
+  border: 1px solid var(--border);
   /* border-gray-700 */
   display: flex;
   flex-direction: column;
 }
 
 .pill {
-  background-color: #383838;
+  background-color: var(--border);
   /* bg-gray-700 */
-  color: #d1d5db;
+  color: var(--foreground-secondary);
   /* text-gray-300 */
   padding: 8px 16px;
   border-radius: 9999px;
@@ -479,9 +496,9 @@ footer a {
 }
 
 .pill {
-  background-color: #383838;
+  background-color: var(--border);
   /* bg-gray-700 */
-  color: #d1d5db;
+  color: var(--foreground-secondary);
   /* text-gray-300 */
   /* Smaller padding and font size by default for mobile */
   padding: 6px 12px;
@@ -607,10 +624,10 @@ button:disabled,
     'Courier New', monospace;
   line-height: 1;
   color: #e5e7eb;
-  background-color: #383838;
+  background-color: var(--border);
   border: 1px solid #444444;
   border-radius: 0.25rem;
-  box-shadow: 0 1px 0 0 #2a2a2a;
+  box-shadow: 0 1px 0 0 var(--surface);
 }
 
 .shortcut-input {
@@ -622,8 +639,8 @@ button:disabled,
 
 .shortcut-input:focus {
   outline: none;
-  border-color: #6366f1;
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(135, 87, 207, 0.2);
 }
 
 /* Custom Scrollbar for Modal Content */
@@ -632,7 +649,7 @@ button:disabled,
 }
 
 #shortcuts-list::-webkit-scrollbar-track {
-  background: #2a2a2a;
+  background: var(--surface);
 }
 
 #shortcuts-list::-webkit-scrollbar-thumb {
@@ -1211,9 +1228,9 @@ details > summary .icon {
     border: none;
     background: conic-gradient(
       from 0turn,
-      rgba(99, 102, 241, 0) 0deg,
-      rgba(99, 102, 241, 0.15) 90deg,
-      rgba(99, 102, 241, 0.6) 240deg,
+      rgba(135, 87, 207, 0) 0deg,
+      rgba(135, 87, 207, 0.15) 90deg,
+      rgba(135, 87, 207, 0.6) 240deg,
       rgb(99, 102, 241) 350deg
     );
     mask: radial-gradient(
@@ -1540,7 +1557,7 @@ details > summary .icon {
   padding: 8px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  background: #2a2a2a;
+  background: var(--surface);
   box-shadow: 0 18px 44px -12px rgba(0, 0, 0, 0.7);
   transform: translateX(-50%);
 }
@@ -1555,7 +1572,7 @@ details > summary .icon {
 }
 
 .nav-products-menu a:hover {
-  background: #383838;
+  background: var(--border);
 }
 
 .nav-product-text {
@@ -1585,7 +1602,7 @@ details > summary .icon {
 
 .faq-d {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: #2a2a2a;
+  background-color: var(--surface);
 }
 
 .faq-d:last-child {
@@ -1603,7 +1620,7 @@ details > summary .icon {
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.5;
-  color: #f3f3f1;
+  color: var(--foreground);
   list-style: none;
   transition:
     color 0.2s,
@@ -1629,18 +1646,18 @@ details > summary .icon {
 }
 
 .faq-d-q:hover {
-  background-color: #383838;
+  background-color: var(--border);
 }
 
 .faq-d[open] .faq-d-q {
-  color: #a5b4fc;
+  color: var(--focus-ring);
 }
 
 .faq-d-icon {
   flex: none;
   width: 20px;
   height: 20px;
-  color: #b4b4b0;
+  color: var(--foreground-secondary);
   transition:
     transform 0.3s,
     color 0.2s;
@@ -1648,7 +1665,7 @@ details > summary .icon {
 
 .faq-d[open] .faq-d-icon {
   transform: rotate(45deg);
-  color: #818cf8;
+  color: var(--fm-violet-300);
 }
 
 .faq-d-a {
@@ -1656,7 +1673,7 @@ details > summary .icon {
   padding: 0 24px 24px;
   font-size: 15px;
   line-height: 1.65;
-  color: #b4b4b0;
+  color: var(--foreground-secondary);
 }
 
 .faq-d-a p {
@@ -1694,4 +1711,33 @@ details > summary .icon {
   flex-direction: column;
   gap: 0.25rem;
   padding: 0.25rem 0;
+}
+
+/* Brand states shared by the landing page and tools. */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+@layer utilities {
+  .border-gray-700 {
+    border-color: var(--border);
+  }
+  .bg-indigo-600:active {
+    background-color: var(--primary-active);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--foreground);
+}
+@layer utilities {
+  a.text-indigo-400,
+  a.text-indigo-300 {
+    color: var(--link);
+  }
 }

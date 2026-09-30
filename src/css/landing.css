@@ -1,18 +1,18 @@
 body.lp {
-  --lp-bg: #222222;
-  --lp-bg-2: #2a2a2a;
-  --lp-bg-3: #383838;
-  --lp-well: #222222;
-  --lp-line: rgba(255, 255, 255, 0.1);
-  --lp-line-2: rgba(255, 255, 255, 0.2);
-  --lp-text: #f3f3f1;
-  --lp-text-2: #b4b4b0;
-  --lp-dim: #8d8d89;
-  --lp-accent: #6366f1;
-  --lp-accent-hover: #4f46e5;
-  --lp-accent-2: #818cf8;
-  --lp-accent-3: #a5b4fc;
-  --lp-white: #f4f4f1;
+  --lp-bg: var(--background);
+  --lp-bg-2: var(--surface);
+  --lp-bg-3: var(--surface-hover);
+  --lp-well: var(--background);
+  --lp-line: var(--border);
+  --lp-line-2: var(--border);
+  --lp-text: var(--foreground);
+  --lp-text-2: var(--foreground-secondary);
+  --lp-dim: var(--foreground-muted);
+  --lp-accent: var(--primary);
+  --lp-accent-hover: var(--primary-hover);
+  --lp-accent-2: var(--fm-violet-300);
+  --lp-accent-3: var(--focus-ring);
+  --lp-white: var(--foreground);
   --lp-display: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
   --lp-mono:
     ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
@@ -22,7 +22,7 @@ body.lp {
 }
 
 body.lp ::selection {
-  background: rgba(99, 102, 241, 0.45);
+  background: rgba(135, 87, 207, 0.45);
   color: #fff;
 }
 
@@ -54,7 +54,7 @@ body.lp ::selection {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: rgba(34, 34, 34, 0.86);
+  background: rgba(15, 12, 20, 0.86);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--lp-line);
@@ -522,7 +522,7 @@ body.lp ::selection {
   pointer-events: none;
   background: radial-gradient(
     50% 42% at 50% 0%,
-    rgba(99, 102, 241, 0.16),
+    rgba(135, 87, 207, 0.16),
     transparent 70%
   );
 }
@@ -585,7 +585,7 @@ body.lp ::selection {
 .lp-hero-bg i:nth-child(5) {
   left: calc(50% - 28px - 168px);
   top: 392px;
-  background: rgba(99, 102, 241, 0.16);
+  background: rgba(135, 87, 207, 0.16);
 }
 
 .lp-hero-bg i:nth-child(6) {
@@ -1117,7 +1117,7 @@ body.lp ::selection {
 
 .lp-input:focus {
   border-color: var(--lp-accent);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.18);
+  box-shadow: 0 0 0 4px rgba(135, 87, 207, 0.18);
 }
 
 .lp-search-right {
@@ -1179,31 +1179,31 @@ body.lp ::selection {
 }
 
 .lp #tool-grid {
-  --tile-fg: #a5b4fc;
+  --tile-fg: var(--focus-ring);
 }
 
 .lp #tool-grid > .is-cat-edit-annotate {
-  --tile-fg: #d6c285;
+  --tile-fg: var(--fm-violet-200);
 }
 
 .lp #tool-grid > .is-cat-convert-to-pdf {
-  --tile-fg: #79c4cb;
+  --tile-fg: var(--fm-mint-300);
 }
 
 .lp #tool-grid > .is-cat-convert-from-pdf {
-  --tile-fg: #b8aade;
+  --tile-fg: var(--fm-violet-300);
 }
 
 .lp #tool-grid > .is-cat-organize-manage {
-  --tile-fg: #8dacda;
+  --tile-fg: var(--fm-violet-400);
 }
 
 .lp #tool-grid > .is-cat-optimize-repair {
-  --tile-fg: #89cca8;
+  --tile-fg: var(--fm-mint-400);
 }
 
 .lp #tool-grid > .is-cat-secure-pdf {
-  --tile-fg: #dea3a3;
+  --tile-fg: var(--fm-violet-200);
 }
 
 .lp .category-group {
@@ -1436,7 +1436,7 @@ body.lp ::selection {
   pointer-events: none;
   background: radial-gradient(
     60% 70% at 50% 110%,
-    rgba(99, 102, 241, 0.28),
+    rgba(135, 87, 207, 0.28),
     transparent 70%
   );
 }
@@ -1887,7 +1887,7 @@ body.lp ::selection {
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 10px;
-  background: rgb(34, 34, 34);
+  background: var(--background);
 }
 
 .lp #shortcuts-tab-btn,
@@ -1929,7 +1929,7 @@ body.lp ::selection {
   height: 38px;
   border: 1px solid var(--lp-line-2);
   border-radius: 8px;
-  background: rgb(34, 34, 34);
+  background: var(--background);
   font-size: 13.5px;
   color: var(--lp-text);
   transition:
@@ -1939,7 +1939,7 @@ body.lp ::selection {
 
 .lp #shortcut-search:focus {
   border-color: var(--lp-accent);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18);
+  box-shadow: 0 0 0 3px rgba(135, 87, 207, 0.18);
   outline: none;
 }
 
@@ -1949,9 +1949,9 @@ body.lp ::selection {
 
 .lp #shortcuts-tab-content > div:nth-child(2) {
   padding: 12px 14px;
-  border: 1px solid rgba(129, 140, 248, 0.25);
+  border: 1px solid rgba(170, 135, 222, 0.25);
   border-radius: 10px;
-  background: rgba(99, 102, 241, 0.08);
+  background: rgba(135, 87, 207, 0.08);
 }
 
 .lp #shortcuts-tab-content > div:nth-child(2) p {
@@ -1976,7 +1976,7 @@ body.lp ::selection {
   padding: 10px 12px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 10px;
-  background: rgb(34, 34, 34);
+  background: var(--background);
   transition:
     background-color 0.15s,
     border-color 0.15s;
@@ -2010,7 +2010,7 @@ body.lp ::selection {
 
 .lp #shortcuts-list .shortcut-input:focus {
   border-color: var(--lp-accent);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18);
+  box-shadow: 0 0 0 3px rgba(135, 87, 207, 0.18);
 }
 
 .lp #preferences-tab-content h4 {
@@ -2024,7 +2024,7 @@ body.lp ::selection {
   padding: 14px 16px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 10px;
-  background: rgb(34, 34, 34);
+  background: var(--background);
 }
 
 .lp #preferences-tab-content .bg-gray-900 label:first-child,
@@ -2041,7 +2041,7 @@ body.lp ::selection {
 
 .lp #preferences-tab-content a.bg-gray-900:hover {
   background: rgba(255, 255, 255, 0.11);
-  border-color: rgba(129, 140, 248, 0.4);
+  border-color: rgba(170, 135, 222, 0.4);
 }
 
 .lp #preferences-tab-content a.bg-gray-900:hover svg {
@@ -2150,4 +2150,25 @@ body.lp ::selection {
   .lp-h1-lead {
     display: block;
   }
+}
+
+.lp-btn--primary:active {
+  background-color: var(--primary-active);
+}
+
+/* Semantic roles from the approved interface palette. */
+.lp-btn--ghost,
+.lp-pill-btn--ghost {
+  background: transparent;
+  border-color: var(--fm-violet-500);
+  color: var(--link);
+}
+.lp-btn--ghost:hover,
+.lp-pill-btn--ghost:hover {
+  background: var(--primary-soft);
+  border-color: var(--focus-ring);
+}
+.lp-nav-links a:hover,
+.lp-nav-links a.active {
+  color: var(--link);
 }

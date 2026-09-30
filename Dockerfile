@@ -3,7 +3,7 @@
 ARG BASE_URL=
 
 # Build stage
-FROM public.ecr.aws/docker/library/node:20-alpine AS builder
+FROM --platform=$BUILDPLATFORM public.ecr.aws/docker/library/node:22-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
 COPY vendor ./vendor
@@ -15,11 +15,11 @@ RUN npm config set fetch-retries 5 && \
     npm ci
 COPY . .
 
-# Build without type checking (vite build only)
+# Build the full interface, including type checks and SEO validation
 # Pass SIMPLE_MODE environment variable if provided
 ARG SIMPLE_MODE=false
 ENV SIMPLE_MODE=$SIMPLE_MODE
-ARG DISABLE_GITHUB_STARS=false
+ARG DISABLE_GITHUB_STARS=true
 ENV DISABLE_GITHUB_STARS=$DISABLE_GITHUB_STARS
 ARG COMPRESSION_MODE=all
 ENV COMPRESSION_MODE=$COMPRESSION_MODE
@@ -54,9 +54,9 @@ ARG VITE_DEFAULT_LANGUAGE
 ENV VITE_DEFAULT_LANGUAGE=$VITE_DEFAULT_LANGUAGE
 
 # Custom branding (e.g. VITE_BRAND_NAME=MyCompany VITE_BRAND_LOGO=my-logo.svg)
-ARG VITE_BRAND_NAME
-ARG VITE_BRAND_LOGO
-ARG VITE_FOOTER_TEXT
+ARG VITE_BRAND_NAME="Format Monster"
+ARG VITE_BRAND_LOGO=images/format-monster.svg
+ARG VITE_FOOTER_TEXT="Format Monster · Powered by BentoPDF"
 ENV VITE_BRAND_NAME=$VITE_BRAND_NAME
 ENV VITE_BRAND_LOGO=$VITE_BRAND_LOGO
 ENV VITE_FOOTER_TEXT=$VITE_FOOTER_TEXT
@@ -64,10 +64,8 @@ ENV VITE_FOOTER_TEXT=$VITE_FOOTER_TEXT
 ARG DISABLE_TOOLS
 ENV DISABLE_TOOLS=$DISABLE_TOOLS
 
-# Public-facing canonical site URL. Defaults to the official site so self-hosters
-# consolidate SEO signals back to bentopdf.com. Override with --build-arg
-# SITE_URL=https://your-domain.example to claim canonical for your own deployment.
-ARG SITE_URL=https://www.bentopdf.com
+# Public-facing canonical URL for this fork. Override for another deployment.
+ARG SITE_URL=https://format.monster
 ENV SITE_URL=$SITE_URL
 
 ENV NODE_OPTIONS="--max-old-space-size=3072"
@@ -81,8 +79,10 @@ RUN --mount=type=secret,id=VITE_CORS_PROXY_URL,required=false \
 # Production stage
 FROM quay.io/nginx/nginx-unprivileged:alpine-slim
 
-LABEL org.opencontainers.image.source="https://github.com/alam00000/bentopdf"
-LABEL org.opencontainers.image.url="https://github.com/alam00000/bentopdf"
+LABEL org.opencontainers.image.source="https://github.com/WellFREEzZ/format-monster"
+LABEL org.opencontainers.image.url="https://format.monster"
+LABEL org.opencontainers.image.title="Format Monster"
+LABEL org.opencontainers.image.licenses="AGPL-3.0-only"
 
 # global arg to local arg
 ARG BASE_URL

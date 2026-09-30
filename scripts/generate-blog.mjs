@@ -1,3 +1,4 @@
+import './format-monster-env.mjs';
 import fs from 'fs';
 import path from 'path';
 import { marked } from 'marked';
@@ -8,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 const POSTS_DIR = path.resolve(__dirname, '../blog/posts');
 const BLOG_DIR = path.resolve(__dirname, '../blog');
-const SITE_URL = 'https://www.bentopdf.com';
+const SITE_URL = process.env.SITE_URL.replace(/\/+$/, '');
 const AUTHOR = {
   name: 'Alam',
   url: `${SITE_URL}/blog/author-alam`,
@@ -330,9 +331,9 @@ function renderIndex(posts) {
       content="Guides and honest comparisons from the maintainer of BentoPDF: how PDF tools handle your files, and how to get things done without uploading them."
     />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <link rel="canonical" href="${SITE_URL}/blog/" />
+    <link rel="canonical" href="${SITE_URL}/blog" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="${SITE_URL}/blog/" />
+    <meta property="og:url" content="${SITE_URL}/blog" />
     <meta property="og:title" content="The BentoPDF Blog" />
     <meta
       property="og:description"

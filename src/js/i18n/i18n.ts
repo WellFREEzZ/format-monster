@@ -4,6 +4,8 @@ import { getStoredItem, setStoredItem } from '../utils/safe-storage.js';
 import enCommon from '../../../public/locales/en/common.json';
 import enTools from '../../../public/locales/en/tools.json';
 
+declare const __BRAND_NAME__: string;
+
 // Supported languages
 export const supportedLanguages = [
   'en',
@@ -146,7 +148,14 @@ export const initI18n = async (): Promise<typeof i18next> => {
 };
 
 export const t = (key: string, options?: Record<string, unknown>): string => {
-  return i18next.t(key, options);
+  const translation = i18next.t(key, options);
+  if (key === 'features.bentoPdf') {
+    return translation.replace(
+      /Bento\s?PDF/g,
+      __BRAND_NAME__ || 'Format Monster'
+    );
+  }
+  return translation;
 };
 
 export const changeLanguage = (lang: SupportedLanguage): void => {

@@ -1,3 +1,5 @@
+import { brandDocument } from './format-monster-metadata.mjs';
+import './format-monster-env.mjs';
 import fs from 'fs';
 import path from 'path';
 import { JSDOM } from 'jsdom';
@@ -163,8 +165,21 @@ function enhance() {
       if (injectFaqSchema(document)) faqSchemaCount++;
     }
 
+    brandDocument(document);
     fs.writeFileSync(file, dom.serialize());
     dom.window.close();
+  }
+  const blogDir = path.join(DIST_DIR, 'blog');
+  if (fs.existsSync(blogDir)) {
+    for (const name of fs
+      .readdirSync(blogDir)
+      .filter((name) => name.endsWith('.html'))) {
+      const file = path.join(blogDir, name);
+      const dom = new JSDOM(fs.readFileSync(file, 'utf-8'));
+      brandDocument(dom.window.document);
+      fs.writeFileSync(file, dom.serialize());
+      dom.window.close();
+    }
   }
   console.log(
     `SEO enhance: ${files.length} pages processed, ${faqSchemaCount} FAQPage schemas added.`
